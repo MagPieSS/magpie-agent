@@ -32,4 +32,4 @@ MagPie originates and builds; Planner (or the project-planning skill) organizes 
 
 Drop `.claude/agents/` into any repo you're working in, and Claude Code will pick up all three as invocable subagents (it scans the folder recursively, so subdirectories like `Skills/` are fine). Invoke by name, e.g. "use the planner agent to break this down."
 
-See [CLAUDE.md](CLAUDE.md) for the fuller architecture notes aimed at Claude Code itself.
+See [.claude/CLAUDE.md](.claude/CLAUDE.md) for the fuller architecture notes aimed at Claude Code itself.

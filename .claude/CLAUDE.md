@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-This is not a software project — there is no source code, build system, package manifest, or test suite here. The repository (not currently under git) contains only Claude Code subagent configuration:
+This is not a software project — there is no source code, build system, package manifest, or test suite here. The repository contains only Claude Code subagent configuration:
 
 ```text
 .claude/agents/
@@ -14,7 +14,7 @@ This is not a software project — there is no source code, build system, packag
     └── Skills.md       (agent: project-planning)
 ```
 
-Claude Code scans `.claude/agents/` recursively, so a file's subdirectory location doesn't affect registration — only its frontmatter `name` field does.
+Claude Code scans `.claude/agents/` recursively, so a file's subdirectory location doesn't affect registration — only its frontmatter `name` field does. (These files have previously been moved out of `.claude/agents/` by accident, which silently unregisters them as subagents even though their content is untouched — if a persona seems to have stopped working, check its location first.)
 
 All three files use standard YAML frontmatter (`name`, `description` between `---` delimiters), so all three register as invocable subagents.
 
@@ -24,11 +24,11 @@ Because there is nothing to build, lint, or test, do not assume standard dev com
 
 These files define personas/subagents for a personal assistant system, not application code. They are meant to be read together as one design:
 
-- **MagPie** ([.claude/agents/MagPie.md](.claude/agents/MagPie.md)) — the default builder/thinking-partner persona for the user (Josiah). Handles ideation, coding help, and creative projects. Pushes back on bad ideas rather than agreeing by default, and explicitly resists scope creep ("That's a good Phase 2 idea. Let's finish the first version first.").
-- **planner** ([.claude/agents/Planner.md](.claude/agents/Planner.md)) — a subagent focused purely on turning ideas into prioritized, phased plans (HIGH/MEDIUM/LOW priority, MVP-first). Explicitly *not* a builder.
-- **project-planning** ([.claude/agents/Skills/Skills.md](.claude/agents/Skills/Skills.md)) — a skill-style variant of the same planning process (goal → MVP → steps → priorities → blockers → milestones → next action), invoked as a lighter-weight in-conversation flow rather than a separate subagent.
+- **MagPie** ([agents/MagPie.md](agents/MagPie.md)) — the default builder/thinking-partner persona for the user (Josiah). Handles ideation, coding help, and creative projects. Pushes back on bad ideas rather than agreeing by default, and explicitly resists scope creep ("That's a good Phase 2 idea. Let's finish the first version first.").
+- **planner** ([agents/Planner.md](agents/Planner.md)) — a subagent focused purely on turning ideas into prioritized, phased plans (HIGH/MEDIUM/LOW priority, MVP-first). Explicitly *not* a builder.
+- **project-planning** ([agents/Skills/Skills.md](agents/Skills/Skills.md)) — a skill-style variant of the same planning process (goal → MVP → steps → priorities → blockers → milestones → next action), invoked as a lighter-weight in-conversation flow rather than a separate subagent.
 
-The intended workflow, per [.claude/agents/Planner.md](.claude/agents/Planner.md), is a loop:
+The intended workflow, per [agents/Planner.md](agents/Planner.md), is a loop:
 
 ```text
 MagPie → Idea/Problem → Planner → Plan → MagPie/Claude Code → Build → Planner → Next milestone
