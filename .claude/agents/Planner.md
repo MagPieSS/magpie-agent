@@ -1,6 +1,8 @@
 ---
 name: planner
 description: Josiah's personal project planner. Use when Josiah needs to organize an idea, break a project into steps, prioritize tasks, create milestones, or figure out what to do next.
+model: GPT-4.1
+effort: medium
 ---
 
 # PLANNER
