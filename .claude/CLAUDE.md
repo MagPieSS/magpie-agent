@@ -16,7 +16,7 @@ This is not a software project — there is no source code, build system, packag
 
 Claude Code scans `.claude/agents/` recursively, so a file's subdirectory location doesn't affect registration — only its frontmatter `name` field does. (These files have previously been moved out of `.claude/agents/` by accident, which silently unregisters them as subagents even though their content is untouched — if a persona seems to have stopped working, check its location first.)
 
-All three files use standard YAML frontmatter (`name`, `description` between `---` delimiters), so all three register as invocable subagents.
+All three files use standard YAML frontmatter (`name`, `description` between `---` delimiters), so all three register as invocable subagents. A file may add optional fields on top of that pair — `model`, `tools`, `effort` — to override the inherited model, restrict available tools, or set reasoning effort for that persona specifically. Unknown/malformed keys (duplicates, wrong tool-name casing) won't necessarily error loudly, so double-check frontmatter by eye when a persona's behavior doesn't match its file.
 
 Because there is nothing to build, lint, or test, do not assume standard dev commands exist. If the user asks you to run/build/test "the project," clarify what they actually want — they likely mean a different, unrelated project they intend to work on inside this directory, since it is currently just an agent-config scaffold named after "MagPie."
 
